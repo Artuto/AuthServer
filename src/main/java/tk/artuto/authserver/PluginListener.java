@@ -15,6 +15,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.List;
+
 public class PluginListener implements Listener
 {
     private final AuthServer plugin;
@@ -30,7 +32,13 @@ public class PluginListener implements Listener
         Player player = event.getPlayer();
         event.setJoinMessage(null);
 
-        String message = Utils.fixColors(plugin.getConfig().getString("join_message"))
+        StringBuilder messages = new StringBuilder();
+        List<String> lines = plugin.getConfig().getStringList("join_message");
+
+        for(int i = 0; i < lines.size(); i++)
+            messages.append(lines.get(i)).append("\n");
+
+        String message = Utils.fixColors(messages.toString())
                 .replace("%player%", player.getName());
         player.sendMessage(message);
 

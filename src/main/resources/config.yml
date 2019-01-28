@@ -3,7 +3,9 @@
 # Placeholders for join message:
 #  %player% - Replaced with the player's name
 
-join_message: '&aWelcome %player%!'
+join_message:
+  - '&aWelcome %player%!'
+  - 'Login with /login'
 tablist.header: 'Header'
 tablist.footer: 'Footer'
 scoreboard.title: 'AuthServer'
