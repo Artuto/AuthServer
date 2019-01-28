@@ -1,0 +1,7 @@
+name: AuthServer
+version: ${project.version}
+main: tk.artuto.authserver.AuthServer
+api-version: 1.13
+depend: [ProtocolLib]
+authors: [Artuto]
+description: Essential plugin for Auth servers
