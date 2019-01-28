@@ -28,6 +28,9 @@ public class AuthServer extends JavaPlugin
         // Register listeners
         plManag.registerEvents(new PluginListener(this), this);
 
+        // Register commands
+        getCommand("authserver").setExecutor(new AuthServerCmd(this));
+
         // Initialize managers
         this.protocolManager = ProtocolLibrary.getProtocolManager();
 

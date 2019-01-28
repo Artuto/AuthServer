@@ -1,15 +1,19 @@
 package tk.artuto.authserver;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scoreboard.Scoreboard;
 
 public class PluginListener implements Listener
 {
@@ -23,11 +27,18 @@ public class PluginListener implements Listener
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerJoin(PlayerJoinEvent event)
     {
+        Player player = event.getPlayer();
         event.setJoinMessage(null);
 
         String message = Utils.fixColors(plugin.getConfig().getString("join_message"))
-                .replace("%player%", event.getPlayer().getName());
-        event.getPlayer().sendMessage(message);
+                .replace("%player%", player.getName());
+        player.sendMessage(message);
+
+        Utils.sendPacket(player, Utils.getTablist());
+        Scoreboard board = Utils.getScoreboard();
+
+        for(Player p : Bukkit.getOnlinePlayers())
+            p.setScoreboard(board);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -62,5 +73,12 @@ public class PluginListener implements Listener
             return;
 
         event.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onEntityDamage(EntityDamageEvent event)
+    {
+        if(event.getEntityType() == EntityType.PLAYER)
+            event.setCancelled(true);
     }
 }
