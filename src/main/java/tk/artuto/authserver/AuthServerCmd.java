@@ -17,12 +17,6 @@ public class AuthServerCmd implements CommandExecutor
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
-        if(!(sender.hasPermission("authserver.command")))
-        {
-            sender.sendMessage(ChatColor.RED + "You don't have permission!");
-            return true;
-        }
-
         if(!(args.length > 0))
             return false;
 
