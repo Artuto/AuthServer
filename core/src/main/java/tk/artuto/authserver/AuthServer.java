@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 
 public class AuthServer extends JavaPlugin
 {
-    private String pluginTag;
-
     // Modules
     private IChatModule chatModule;
     private IDamageModule damageModule;
@@ -35,9 +33,6 @@ public class AuthServer extends JavaPlugin
     @Override
     public void onEnable()
     {
-        this.pluginTag = getDescription().getName() + " " + getDescription().getVersion();
-        getLogger().info("Enabling " + pluginTag + "...");
-
         // Save config
         saveDefaultConfig();
         initConfig();
@@ -99,13 +94,18 @@ public class AuthServer extends JavaPlugin
         //noinspection ConstantConditions
         getCommand("authserver").setExecutor(new AuthServerCmd(this));
 
-        getLogger().info("Enabled " + pluginTag);
+        getLogger().info("Enabled " + getDescription().getName() + " " + getDescription().getVersion());
     }
 
     @Override
     public void onDisable()
     {
-        getLogger().info("Disabled " + pluginTag);
+        this.chatModule = null;
+        this.damageModule = null;
+        this.joinLeaveMessageModule = null;
+        this.movementModule = null;
+        this.scoreboardModule = null;
+        this.tabListModule = null;
     }
 
     private void initConfig()
@@ -141,16 +141,19 @@ public class AuthServer extends JavaPlugin
             {
                 getLogger().info("Detected Minecraft 1.12");
                 this.scoreboardModule = new ScoreboardModule_v1_12_2(); // API changed between 1.12.2 and 1.13.2
+                break;
             }
             case "13":
             {
                 getLogger().info("Detected Minecraft 1.13");
                 this.scoreboardModule = new ScoreboardModule_v1_13_2();
+                break;
             }
             case "14":
             {
                 getLogger().info("Detected Minecraft 1.14");
                 this.scoreboardModule = new ScoreboardModule_v1_13_2(); // No API changes here, reuse
+                break;
             }
             default:
                 throw new IllegalStateException("Unsupported Minecraft version.");
