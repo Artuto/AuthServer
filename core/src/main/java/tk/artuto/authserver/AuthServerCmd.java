@@ -22,8 +22,10 @@ public class AuthServerCmd implements CommandExecutor
 
         if(args[0].toLowerCase().equals("reload"))
         {
-            plugin.reloadConfig();
-            sender.sendMessage(ChatColor.GREEN + "Successfully reloaded config!");
+            // plugin.reloadConfig();
+            plugin.onDisable();
+            plugin.onEnable();
+            sender.sendMessage(ChatColor.GREEN + "Successfully reloaded plugin!");
             return true;
         }
 

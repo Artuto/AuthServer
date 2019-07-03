@@ -1,0 +1,37 @@
+# AuthServer config file
+# Use '&' for colors
+# Placeholders for join message:
+#  %player% - Replaced with the player's name
+
+join_message:
+  enabled: true
+  message:
+    - '&aWelcome %player%!'
+    - 'Login with /login'
+  # Global message. Leave this empty to disable
+  global: 'Welcome back, %player%'
+
+# Global message. Leave this empty to disable
+leave_message:
+  global: '%player% just left, we''ll miss them.'
+
+tablist:
+  enabled: true
+  header: 'Header'
+  footer: 'Footer'
+
+scoreboard:
+  enabled: true
+  title: 'AuthServer'
+  lines:
+    - 'Login with /login'
+    - 'Register with /register'
+
+# Allow players not in Creative mode to chat
+enable_chat: false
+
+# Allow players not in Creative mode to move
+enable_movement: false
+
+# Allow players to receive damage
+enable_damage: false
