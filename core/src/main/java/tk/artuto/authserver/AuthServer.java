@@ -42,7 +42,7 @@ public class AuthServer extends JavaPlugin
         detectVersionAndEnableModules();
 
         // Register modules
-        if(getConfig().getBoolean("enable_chat"))
+        if(!(getConfig().getBoolean("enable_chat")))
         {
             getLogger().info("Enabled chat module");
             plManag.registerEvents(chatModule, this);
@@ -50,7 +50,7 @@ public class AuthServer extends JavaPlugin
         else
             this.chatModule = null;
 
-        if(getConfig().getBoolean("enable_damage"))
+        if(!(getConfig().getBoolean("enable_damage")))
         {
             getLogger().info("Enabled damage module");
             plManag.registerEvents(damageModule, this);
@@ -64,7 +64,7 @@ public class AuthServer extends JavaPlugin
             plManag.registerEvents(joinLeaveMessageModule, this);
         }
 
-        if(getConfig().getBoolean("enable_movement"))
+        if(!(getConfig().getBoolean("enable_movement")))
         {
             getLogger().info("Enabled movement module");
             plManag.registerEvents(movementModule, this);
