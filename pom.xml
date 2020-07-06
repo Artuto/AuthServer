@@ -10,7 +10,7 @@
 
     <packaging>pom</packaging>
 
-    <name>AuthServer</name>
+    <name>AuthServer-Parent</name>
     <url>https://artuto.xyz</url>
     <description>Essential plugin for Auth and Lobby servers</description>
 
@@ -51,27 +51,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.0</version>
-
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <minimizeJar>true</minimizeJar>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
 
