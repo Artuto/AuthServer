@@ -1,18 +1,22 @@
 name: AuthServer
 version: ${project.version}
-main: tk.artuto.authserver.AuthServer
+main: xyz.artuto.authserver.AuthServer
+api-version: 1.13
 depend: [ProtocolLib]
 authors: [Artuto]
 description: Essential plugin for Auth and Lobby servers
+
 commands:
   authserver:
     description: Main command
     permission: authserver.command
     permission-message: You do not have permission!
     usage: /authserver <reload>
+
 permissions:
   authserver.command:
     default: op
+
   authserver.*:
     default: false
     children:

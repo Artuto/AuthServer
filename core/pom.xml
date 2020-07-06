@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>tk.artuto</groupId>
+        <groupId>xyz.artuto</groupId>
         <artifactId>authserver-parent</artifactId>
         <version>2.0</version>
     </parent>
@@ -23,6 +23,7 @@
             <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
@@ -31,30 +32,22 @@
         </dependency>
 
         <dependency>
-            <groupId>tk.artuto</groupId>
-            <artifactId>authserver-modules-common</artifactId>
-            <version>2.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>tk.artuto</groupId>
+            <groupId>xyz.artuto</groupId>
             <artifactId>authserver-interfaces</artifactId>
-            <version>2.0</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Specific version support -->
         <dependency>
-            <groupId>tk.artuto</groupId>
+            <groupId>xyz.artuto</groupId>
             <artifactId>authserver-v1_13_2</artifactId>
-            <version>2.0</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>tk.artuto</groupId>
+            <groupId>xyz.artuto</groupId>
             <artifactId>authserver-v1_12_2</artifactId>
-            <version>2.0</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
